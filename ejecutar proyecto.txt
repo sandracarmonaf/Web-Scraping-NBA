@@ -1,0 +1,5 @@
+Abre una terminal y navega a la carpeta de tu proyecto. Luego ejecuta:
+python -m venv venv
+venv\Scripts\Activate
+pip freeze > requirements.txt
+pip install -r requirements.txt
