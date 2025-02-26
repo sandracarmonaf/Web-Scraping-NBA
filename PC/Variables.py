@@ -1,5 +1,0 @@
-seasontype =['Regular%20Season','Playoffs','Pre%20Season']
-permode = ['Totals','PerGame','Per48']
-statcategory = ['PTS','MIN']
-year = ['2023-24','2024-25']
-urls = []
