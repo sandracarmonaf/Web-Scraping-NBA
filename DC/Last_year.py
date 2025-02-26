@@ -212,7 +212,7 @@ def CreateCSV(Equipos, Divisiones, Conferencias, Tag):
     df["Classification"] = yearAndClassification[1]
     print(df.head(len(Equipos)))
 
-    df.to_csv(f"./team_data/{yearAndClassification[0]}_{yearAndClassification[1]}.csv", index=False)
+    df.to_csv(f"{yearAndClassification[0]}_{yearAndClassification[1]}.csv", index=False)
     print(f"archivo guardado en un CSV como {yearAndClassification[0]}_{yearAndClassification[1]}.csv")
 
 if __name__ == "__main__":
@@ -227,45 +227,43 @@ if __name__ == "__main__":
 
 
     #--------------------------------------------------------------------------------------------------------------
-    links = driver.find_elements(By.XPATH, '//tr[@class="thead"]/following-sibling::tr/th[@scope="row"]/a')
-    print(len(links))
-    for link in links:
-        url = link.get_attribute("href")  # Obtiene la URL del enlace
-        len(links)
-        print(f"Abriendo: {url}")
+    link = driver.find_element(By.XPATH, '//tr[@class="thead"]/following-sibling::tr/th[@scope="row"]/a[1]')
+    url = link.get_attribute("href")  # Obtiene la URL del enlace
+    
+    print(f"Abriendo: {url}")
 
-        # Abrir el enlace en una nueva pestaña
-        driver.execute_script(f"window.open('{url}', '_blank');")
-        time.sleep(2)  # Esperar un poco para que la página cargue
+    # Abrir el enlace en una nueva pestaña
+    driver.execute_script(f"window.open('{url}', '_blank');")
+    time.sleep(2)  # Esperar un poco para que la página cargue
 
-        # Cambiar a la nueva pestaña
-        driver.switch_to.window(driver.window_handles[-1])
-        time.sleep(2)
-        e_input = driver.find_element(By.XPATH, '//ul[@class="hoversmooth"]/li[2]')
-        e_input.click()
-        time.sleep(2)  # Esperar un poco más para evitar errores de carga
+    # Cambiar a la nueva pestaña
+    driver.switch_to.window(driver.window_handles[-1])
+    time.sleep(2)
+    e_input = driver.find_element(By.XPATH, '//ul[@class="hoversmooth"]/li[2]')
+    e_input.click()
+    time.sleep(2)  # Esperar un poco más para evitar errores de carga
 
-        EquiposTotales, DivisonesTotales, ConferenciasTotales, yearAndClassification, tag = Scraping(driver)
-        CreateCSV(EquiposTotales, DivisonesTotales, ConferenciasTotales, tag)
+    EquiposTotales, DivisonesTotales, ConferenciasTotales, yearAndClassification, tag = Scraping(driver)
+    CreateCSV(EquiposTotales, DivisonesTotales, ConferenciasTotales, tag)
         
 
-        driver.close()
-        time.sleep(1)
-        driver.switch_to.window(driver.window_handles[0])
+    driver.close()
+    time.sleep(1)
+    driver.switch_to.window(driver.window_handles[0])
 
-        thead_E = []
-        full_table_E = []
-        thead_name_E = []
+    thead_E = []
+    full_table_E = []
+    thead_name_E = []
 
-        thead_W = []
-        thead_name_W = []
-        full_table_W = []
+    thead_W = []
+    thead_name_W = []
+    full_table_W = []
 
-        Equipos = []
-        Divisiones = []
-        Conferencias = []
-        year_clasificacion = []
-        Name_Tag = []
+    Equipos = []
+    Divisiones = []
+    Conferencias = []
+    year_clasificacion = []
+    Name_Tag = []
 
 
     #--------------------------------------------------------------------------------------------------------------
