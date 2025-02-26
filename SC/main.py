@@ -136,7 +136,7 @@ def download_image(player_id, season, player_name):
 
 # Obtener todos los jugadores
 t_players = players.get_players()
-all_players = [p for p in t_players if p["is_active"] or player['id'] > 2020]
+all_players = [p for p in t_players if p["is_active"] or player['id'] > 2023]
 
 # Lista para almacenar los datos de cada jugador
 player_data = []
