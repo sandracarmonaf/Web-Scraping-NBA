@@ -9,6 +9,9 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+# import boto3
+# from io import StringIO
+
 def SetUp():
     service = Service(ChromeDriverManager().install())
     option = webdriver.ChromeOptions()
@@ -214,6 +217,14 @@ def CreateCSV(Equipos, Divisiones, Conferencias, Tag):
 
     df.to_csv(f"./team_data/{yearAndClassification[0]}_{yearAndClassification[1]}.csv", index=False)
     print(f"archivo guardado en un CSV como {yearAndClassification[0]}_{yearAndClassification[1]}.csv")
+
+    # BUCKET_NAME = 'datalake-nba-dmc'
+    # csv_buffer = StringIO()
+    # df.to_csv(csv_buffer)
+
+    # s3 = boto3.resource('s3')
+    # data = open()
+    # s3.Object(BUCKET_NAME).put_object(Key='', Body=data)
 
 if __name__ == "__main__":
 
