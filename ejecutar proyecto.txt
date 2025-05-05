@@ -6,4 +6,27 @@ pip install -r requirements.txt
 
 python3 -m venv venv
 source venv/bin/activate
+source venv/Scripts/activate
 pip install -r requirements.txt
+
+
+#inatalar librerias
+sudo apt update
+sudo apt install python3-venv python3-pip
+
+python3 -m venv venv
+source venv/bin/activate
+pip install selenium==4.31.0
+
+#Instalar Chrome
+##dependecias basicas
+sudo apt update
+sudo apt install -y wget unzip curl gnupg
+##agrega el repositorio de chrome
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
+##instala chrome
+sudo apt update
+sudo apt install -y google-chrome-stable
+##verificacion de que se instalo
+google-chrome --version
